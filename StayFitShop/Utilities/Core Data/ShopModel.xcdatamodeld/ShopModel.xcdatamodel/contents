@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CachedProduct" representedClassName="CachedProduct" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="selectedQuantity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="selectedSize" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stock" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="cart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cart" inverseName="products" inverseEntity="Cart"/>
+        <relationship name="category" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="product" inverseEntity="Category"/>
+        <relationship name="imageGallery" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ImageGallery" inverseName="product" inverseEntity="ImageGallery"/>
+        <relationship name="size" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Size" inverseName="product" inverseEntity="Size"/>
+    </entity>
+    <entity name="Cart" representedClassName="Cart" syncable="YES">
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CachedProduct" inverseName="cart" inverseEntity="CachedProduct"/>
+    </entity>
+    <entity name="Category" representedClassName="Category" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedProduct" inverseName="category" inverseEntity="CachedProduct"/>
+    </entity>
+    <entity name="ImageGallery" representedClassName="ImageGallery" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedProduct" inverseName="imageGallery" inverseEntity="CachedProduct"/>
+    </entity>
+    <entity name="Size" representedClassName="Size" syncable="YES">
+        <attribute name="size" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedProduct" inverseName="size" inverseEntity="CachedProduct"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="zip" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="CachedProduct" positionX="364.84375" positionY="234.9765625" width="128" height="239"/>
+        <element name="Cart" positionX="153" positionY="108" width="128" height="44"/>
+        <element name="Category" positionX="-54" positionY="36" width="128" height="73"/>
+        <element name="ImageGallery" positionX="578.03515625" positionY="54.6484375" width="128" height="73"/>
+        <element name="Size" positionX="149.9765625" positionY="-48.38671875" width="128" height="73"/>
+        <element name="User" positionX="153" positionY="108" width="128" height="119"/>
+    </elements>
+</model>
